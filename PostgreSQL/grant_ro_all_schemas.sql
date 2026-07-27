@@ -1,3 +1,5 @@
+-- указать наименование целевого пользователя
+\set target_role 'user_name'
 -- Получить наименование владельца БД 
 WITH db_owner AS (
     SELECT r.rolname 
@@ -6,7 +8,7 @@ WITH db_owner AS (
     WHERE d.datname = current_database()
 )
 -- Выдать права на существующие объекты
-SELECT 'GRANT USAGE ON SCHEMA "' || n.nspname || '" TO "bkp_db_usr_tmp";'
+SELECT 'GRANT USAGE ON SCHEMA "' || n.nspname || '" TO "' || :'target_role' || '";'
 FROM pg_namespace n
 WHERE n.nspname NOT IN ('information_schema', 'pg_catalog', 'pg_toast')
   AND n.nspname NOT LIKE 'pg_%'
@@ -14,7 +16,7 @@ WHERE n.nspname NOT IN ('information_schema', 'pg_catalog', 'pg_toast')
 
 UNION ALL
 
-SELECT 'GRANT SELECT ON ALL TABLES IN SCHEMA "' || n.nspname || '" TO "bkp_db_usr_tmp";'
+SELECT 'GRANT SELECT ON ALL TABLES IN SCHEMA "' || n.nspname || '" TO "' || :'target_role' || '";'
 FROM pg_namespace n
 WHERE n.nspname NOT IN ('information_schema', 'pg_catalog', 'pg_toast')
   AND n.nspname NOT LIKE 'pg_%'
@@ -22,7 +24,7 @@ WHERE n.nspname NOT IN ('information_schema', 'pg_catalog', 'pg_toast')
 
 UNION ALL
 
-SELECT 'GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "' || n.nspname || '" TO "bkp_db_usr_tmp";'
+SELECT 'GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "' || n.nspname || '" TO "' || :'target_role' || '";'
 FROM pg_namespace n
 WHERE n.nspname NOT IN ('information_schema', 'pg_catalog', 'pg_toast')
   AND n.nspname NOT LIKE 'pg_%'
@@ -30,14 +32,14 @@ WHERE n.nspname NOT IN ('information_schema', 'pg_catalog', 'pg_toast')
 
 UNION ALL
 -- Выдать права по умолчанию (на вновь создаваемые объекты)
-SELECT 'ALTER DEFAULT PRIVILEGES FOR ROLE "' || (SELECT rolname FROM db_owner) || '" GRANT SELECT ON TABLES TO "bkp_db_usr_tmp";'
+SELECT 'ALTER DEFAULT PRIVILEGES FOR ROLE "' || (SELECT rolname FROM db_owner) || '" GRANT SELECT ON TABLES TO "' || :'target_role' || '";'
 
 UNION ALL
 
-SELECT 'ALTER DEFAULT PRIVILEGES FOR ROLE "' || (SELECT rolname FROM db_owner) || '" GRANT USAGE, SELECT ON SEQUENCES TO "bkp_db_usr_tmp";'
+SELECT 'ALTER DEFAULT PRIVILEGES FOR ROLE "' || (SELECT rolname FROM db_owner) || '" GRANT USAGE, SELECT ON SEQUENCES TO "' || :'target_role' || '";'
 
 UNION ALL
 
-SELECT 'ALTER DEFAULT PRIVILEGES FOR ROLE "' || (SELECT rolname FROM db_owner) || '" GRANT USAGE ON SCHEMAS TO "bkp_db_usr_tmp";'
+SELECT 'ALTER DEFAULT PRIVILEGES FOR ROLE "' || (SELECT rolname FROM db_owner) || '" GRANT USAGE ON SCHEMAS TO "' || :'target_role' || '";'
 
 ORDER BY 1 \gexec
