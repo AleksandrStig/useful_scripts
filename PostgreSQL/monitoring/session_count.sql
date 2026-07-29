@@ -2,11 +2,17 @@
 SELECT 
     state,
     count(*) as session_count,
-    round(100.0 * count(*) / (SELECT count(*) FROM pg_stat_activity), 2) as percentage
+    round(
+        100.0 * count(*) / 
+        (SELECT count(*) 
+         FROM pg_stat_activity 
+         WHERE datname = current_database()), 
+        2
+    ) as percentage
 FROM 
     pg_stat_activity
 WHERE 
-    datname = current_database()  -- только для текущей БД (можно убрать для всех БД)
+    datname = current_database()
 GROUP BY 
     state
 ORDER BY 
