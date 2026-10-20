@@ -9,11 +9,11 @@
  ВЕРСИЯ: PG13+ (total_exec_time). На PG12 и ниже замени на total_time.
 */
 WITH targets(datname) AS (VALUES
-    ('flora-business-process-prod'),
-    ('flora-clients-request-prod'),
-    ('flora-comments-and-annotations-prod'),
-    ('flora-communications-prod'),
-    ('flora-legal-execution-prod')
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name')
 )
 SELECT d.datname,
        pg_get_userbyid(s.userid)                       AS role,

@@ -12,11 +12,11 @@
       txid_snapshot_xmax(txid_current_snapshot()).
 */
 WITH targets(datname) AS (VALUES
-    ('flora-business-process-prod'),
-    ('flora-clients-request-prod'),
-    ('flora-comments-and-annotations-prod'),
-    ('flora-communications-prod'),
-    ('flora-legal-execution-prod')
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name')
 )
 SELECT now()                                         AS checked_at,
        pg_snapshot_xmax(pg_current_snapshot())       AS cluster_next_xid,

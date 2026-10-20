@@ -1,5 +1,5 @@
 -- указать наименование целевого пользователя
-\set target_role 'user_name'
+\set target_role 'bi-change-readonly'
 -- Получить наименование владельца БД 
 WITH db_owner AS (
     SELECT r.rolname 

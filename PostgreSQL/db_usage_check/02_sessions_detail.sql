@@ -7,11 +7,11 @@
  ПРАВА: pg_monitor / pg_read_all_stats, иначе query чужих сессий скрыт.
 */
 WITH targets(datname) AS (VALUES
-    ('flora-business-process-prod'),
-    ('flora-clients-request-prod'),
-    ('flora-comments-and-annotations-prod'),
-    ('flora-communications-prod'),
-    ('flora-legal-execution-prod')
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name')
 )
 SELECT a.pid,
        a.datname,

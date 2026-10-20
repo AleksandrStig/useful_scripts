@@ -23,11 +23,11 @@ DO $$
 DECLARE
     -- ===== список проверяемых БД =====
     target_dbs text[] := ARRAY[
-        'flora-business-process-prod',
-        'flora-clients-request-prod',
-        'flora-comments-and-annotations-prod',
-        'flora-communications-prod',
-        'flora-legal-execution-prod'
+        'your_db_name',
+        'your_db_name',
+        'your_db_name',
+        'your_db_name',
+        'your_db_name'
     ];
     -- =================================
     ts        text    := now()::text;

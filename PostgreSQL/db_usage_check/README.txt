@@ -30,10 +30,3 @@ FLORA DB USAGE CHECK (simple)
 - Проверь и реплики: приложение может читать только с них.
 - Твой коннект к целевой БД (09, 10) увеличивает sessions в 03.
 
-ИСТОЧНИКИ
-https://www.postgresql.org/docs/current/monitoring-stats.html
-https://www.postgresql.org/docs/current/routine-vacuuming.html#VACUUM-FOR-WRAPAROUND
-https://www.postgresql.org/docs/current/runtime-config-logging.html
-https://www.postgresql.org/docs/current/view-pg-replication-slots.html
-https://www.postgresql.org/docs/current/pgstatstatements.html
-https://www.postgresql.org/docs/current/app-psql.html  (\watch)

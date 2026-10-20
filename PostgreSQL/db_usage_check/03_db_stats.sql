@@ -11,11 +11,11 @@
  ВАЖНО: любой коннект к целевой БД (в том числе твой) увеличивает sessions на 1.
 */
 WITH targets(datname) AS (VALUES
-    ('flora-business-process-prod'),
-    ('flora-clients-request-prod'),
-    ('flora-comments-and-annotations-prod'),
-    ('flora-communications-prod'),
-    ('flora-legal-execution-prod')
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name')
 )
 SELECT now()                                         AS checked_at,
        d.datname,

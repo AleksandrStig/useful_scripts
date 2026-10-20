@@ -7,11 +7,11 @@
  КАК: разово. Если что-то висит, мониторь через  \watch 300
 */
 WITH targets(datname) AS (VALUES
-    ('flora-business-process-prod'),
-    ('flora-clients-request-prod'),
-    ('flora-comments-and-annotations-prod'),
-    ('flora-communications-prod'),
-    ('flora-legal-execution-prod')
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name')
 )
 SELECT 'session'                         AS holder_type,
        a.datname,

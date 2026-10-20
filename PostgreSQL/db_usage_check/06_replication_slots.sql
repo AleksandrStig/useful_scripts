@@ -9,11 +9,11 @@
  КАК: разово, затем раз в сутки, чтобы видеть, двигается ли confirmed_flush_lsn.
 */
 WITH targets(datname) AS (VALUES
-    ('flora-business-process-prod'),
-    ('flora-clients-request-prod'),
-    ('flora-comments-and-annotations-prod'),
-    ('flora-communications-prod'),
-    ('flora-legal-execution-prod')
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name'),
+    ('your_db_name')
 )
 SELECT now()                         AS checked_at,
        s.database,
